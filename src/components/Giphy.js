@@ -16,13 +16,9 @@ export default class Giphy extends React.Component {
     this.setState({ query: event.target.value });
   };
 
-  handleSubmit = event => {
-    console.log("hiiiii");
+  apiCall = (urlBeginning, query) => {
     let url =
-      "http://api.giphy.com/v1/gifs/search?q=" +
-      this.state.query +
-      "&api_key=kCdfDRHFr9wSutGKEqJo9mqx3hBndt91";
-    console.log(url);
+      urlBeginning + query + "&api_key=kCdfDRHFr9wSutGKEqJo9mqx3hBndt91";
 
     axios
       .get(url)
@@ -32,6 +28,15 @@ export default class Giphy extends React.Component {
       .catch(error => {
         this.setState({ results: [] });
       });
+  };
+
+  handleSubmit = event => {
+    this.apiCall("http://api.giphy.com/v1/gifs/search?q=", this.state.query);
+    event.preventDefault();
+  };
+
+  handleTrending = event => {
+    this.apiCall("http://api.giphy.com/v1/gifs/trending?", "");
     event.preventDefault();
   };
 
@@ -51,6 +56,10 @@ export default class Giphy extends React.Component {
             onChange={this.handleChange}
           />
         </form>
+
+        <button type="button" onClick={this.handleTrending}>
+          Trending
+        </button>
         <div id="header">
           {this.state.results.length > 0 ? (
             <div className="results">{results}</div>
