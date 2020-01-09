@@ -23,7 +23,11 @@ export default class Giphy extends React.Component {
     axios
       .get(url)
       .then(response => {
-        this.setState({ results: response.data.data });
+        if (urlBeginning !== "http://api.giphy.com/v1/gifs/random?") {
+          this.setState({ results: response.data.data });
+        } else {
+          this.setState({ results: [response.data.data] });
+        }
       })
       .catch(error => {
         this.setState({ results: [] });
@@ -40,10 +44,20 @@ export default class Giphy extends React.Component {
     event.preventDefault();
   };
 
+  handleRandom = event => {
+    this.apiCall("http://api.giphy.com/v1/gifs/random?", "");
+    event.preventDefault();
+  };
+
+  makeGifCard = elem => {
+    return <GifCard key={elem.url} url={elem.images.downsized_large.url} />;
+  };
+
   render() {
-    let results = this.state.results.map(elem => (
-      <GifCard key={elem.url} url={elem.images.downsized_large.url} />
-    ));
+    let results =
+      this.state.results.length > 0
+        ? this.state.results.map(elem => this.makeGifCard(elem))
+        : this.results;
 
     return (
       <div id="app">
@@ -60,6 +74,11 @@ export default class Giphy extends React.Component {
         <button type="button" onClick={this.handleTrending}>
           Trending
         </button>
+
+        <button type="button" onClick={this.handleRandom}>
+          Random
+        </button>
+
         <div id="header">
           {this.state.results.length > 0 ? (
             <div className="results">{results}</div>
