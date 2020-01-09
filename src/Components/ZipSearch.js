@@ -1,5 +1,6 @@
 import React from 'react';
 import './ZipSearch.css';
+import Result from './Result';
 
 class ZipSearch extends React.Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class ZipSearch extends React.Component {
   }
 
   handleSubmit(event) {
-
+    event.preventDefault();
   }
 
   render() {
@@ -34,6 +35,9 @@ class ZipSearch extends React.Component {
           </form>
           <div id="results">
             No results
+            <Result/>
+            <Result/>
+            <Result/>
           </div>
         </div>
       </div>
