@@ -8,7 +8,7 @@ export default class ZipSearch extends React.Component {
     super(props);
     this.state = {
       value: '',
-      json: 'this state json',
+      json: 'blank json',
     };
 
     // bindings go here
@@ -26,9 +26,6 @@ export default class ZipSearch extends React.Component {
     console.log(url);
     axios.get(url)
       .then(response => {
-        // console.log(response.data);
-        // var result = response.data.filter(currency => wanted.includes(currency.id));
-        // console.log(response.data);
         this.setState({json: response.data});
         // console.log(this.state.json[0].LocationText);
       },
@@ -37,16 +34,6 @@ export default class ZipSearch extends React.Component {
       })
     event.preventDefault();
   }
-
-    /*
-    axios.get("https://api.coinmarketcap.com/v1/ticker/")
-    .then(response => {
-      var wanted = ["bitcoin", "ethereum", "litecoin"];
-      var result = response.data.filter(currency => wanted.includes(currency.id));
-      this.setState({ data: result});
-    })
-    .catch(err => console.log(err));
-    */
 
   render() {
     return (
@@ -77,6 +64,7 @@ export default class ZipSearch extends React.Component {
               TotalWages={this.state.json[1].TotalWages}/>
 
             <Result/>
+            
           </div>
         </div>
       </div>
