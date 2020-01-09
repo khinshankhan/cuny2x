@@ -21,19 +21,32 @@ export default class ZipSearch extends React.Component {
   }
 
   handleSubmit(event) {
-    console.log("submitted")
+    console.log("submitted");
     let url = "http://ctp-zip-api.herokuapp.com/zip/" + this.state.value;
+    console.log(url);
     axios.get(url)
-      .then((response) => {
-        console.log(response.data);
+      .then(response => {
+        // console.log(response.data);
+        // var result = response.data.filter(currency => wanted.includes(currency.id));
+        // console.log(response.data);
         this.setState({json: response.data});
-        //console.log(this.state.json);
+        // console.log(this.state.json[0].LocationText);
       },
       (error) => {
         console.log(error);
       })
     event.preventDefault();
   }
+
+    /*
+    axios.get("https://api.coinmarketcap.com/v1/ticker/")
+    .then(response => {
+      var wanted = ["bitcoin", "ethereum", "litecoin"];
+      var result = response.data.filter(currency => wanted.includes(currency.id));
+      this.setState({ data: result});
+    })
+    .catch(err => console.log(err));
+    */
 
   render() {
     return (
@@ -48,8 +61,21 @@ export default class ZipSearch extends React.Component {
           </form>
           <div id="results">
             No results
-            <Result/>
-            <Result/>
+
+            <Result LocationText={this.state.json[0].LocationText}
+              State={this.state.json[0].State}
+              Lat={this.state.json[0].Lat}
+              Long={this.state.json[0].Lat}
+              EstimatedPopulation={this.state.json[0].EstimatedPopulation}
+              TotalWages={this.state.json[0].TotalWages}/>
+
+            <Result LocationText={this.state.json[1].LocationText}
+              State={this.state.json[1].State}
+              Lat={this.state.json[1].Lat}
+              Long={this.state.json[1].Lat}
+              EstimatedPopulation={this.state.json[1].EstimatedPopulation}
+              TotalWages={this.state.json[1].TotalWages}/>
+
             <Result/>
           </div>
         </div>
