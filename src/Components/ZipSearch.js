@@ -21,18 +21,15 @@ export default class ZipSearch extends React.Component {
   }
 
   handleSubmit(event) {
-    console.log("submitted");
     let url = "http://ctp-zip-api.herokuapp.com/zip/" + this.state.value;
-    console.log(url);
     axios.get(url)
-      .then(response => {
+      .then((response) => {
         this.setState({json: response.data});
-        // console.log(this.state.json[0].LocationText);
-      },
-      (error) => {
-        console.log(error);
       })
-    event.preventDefault();
+      .catch((error) => {
+        this.setState({json: []});
+      });
+      event.preventDefault();
   }
 
   render() {
