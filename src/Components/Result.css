@@ -1,0 +1,14 @@
+div.result {
+  border-style: solid;
+  margin: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 75px;
+  height: 30px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+div.top {
+  background: lightgray;
+}
