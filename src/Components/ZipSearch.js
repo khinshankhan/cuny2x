@@ -8,7 +8,7 @@ export default class ZipSearch extends React.Component {
     super(props);
     this.state = {
       value: '',
-      json: 'this state json',
+      json: [],
     };
 
     // bindings go here
@@ -21,13 +21,13 @@ export default class ZipSearch extends React.Component {
   }
 
   handleSubmit(event) {
-    console.log("submitted")
+    console.log("submitted");
     let url = "http://ctp-zip-api.herokuapp.com/zip/" + this.state.value;
+    console.log(url);
     axios.get(url)
-      .then((response) => {
-        console.log(response.data);
+      .then(response => {
         this.setState({json: response.data});
-        //console.log(this.state.json);
+        // console.log(this.state.json[0].LocationText);
       },
       (error) => {
         console.log(error);
@@ -36,6 +36,17 @@ export default class ZipSearch extends React.Component {
   }
 
   render() {
+    
+    var results = this.state.json.map((elem) =>
+      <Result LocationText={elem.LocationText}
+        State={elem.State}
+        Lat={elem.Lat}
+        Long={elem.Lat}
+        EstimatedPopulation={elem.EstimatedPopulation}
+        TotalWages={elem.TotalWages}/>
+    );
+
+
     return (
       <div id="app">
         <div id="header">
@@ -47,10 +58,12 @@ export default class ZipSearch extends React.Component {
             <input type="text" placeholder="10016" value={this.state.value} onChange={this.handleChange}/>
           </form>
           <div id="results">
-            No results
-            <Result/>
-            <Result/>
-            <Result/>
+
+            {this.state.json.length > 0 ? <div className="results">{results}</div> : <div>No results</div>}
+
+            
+            
+
           </div>
         </div>
       </div>

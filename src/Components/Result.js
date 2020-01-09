@@ -3,17 +3,16 @@ import './Result.css';
 
 function Result(props) {
   return (
-    <div class="result">
-      <div class="top">
-        Here is a result component<br/>
-        data[0].LocationText
+    <div className="result">
+      <div className="top">
+        {props.LocationText}
       </div>
-      <div class="bottom">
+      <div className="bottom">
         <ul>
-          <li>State: data[0].State</li>
-          <li>Location: (data[0].Lat, data[0].Long)</li>
-          <li>Population: data[0].EstimatedPopulation</li>
-          <li>Total Wages: data[0].TotalWages</li>
+          <li>State: {props.State}</li>
+          <li>Location: ({props.Lat}, {props.Long})</li>
+          <li>Population: {props.EstimatedPopulation}</li>
+          <li>Total Wages: {props.TotalWages}</li>
         </ul>
       </div>
     </div>
