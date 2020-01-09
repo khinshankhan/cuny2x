@@ -1,0 +1,19 @@
+/*
+html, body, div#root, div#app, div#header {
+  margin: 0;
+  padding: 0;
+}
+*/
+
+#app {
+  text-align: center;
+}
+
+div#header {
+  background-color: #222222;;
+  width: 100%;
+}
+
+h1 {
+  color: white;
+}

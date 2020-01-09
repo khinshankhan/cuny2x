@@ -1,9 +1,12 @@
 import React from 'react';
+import './ZipSearch.css';
 
 class ZipSearch extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      value: '',
+    };
 
     // bindings go here
     this.handleChange = this.handleChange.bind(this);
@@ -11,7 +14,7 @@ class ZipSearch extends React.Component {
   }
   
   handleChange(event) {
-
+    this.setState({value: event.target.value});
   }
 
   handleSubmit(event) {
@@ -20,7 +23,7 @@ class ZipSearch extends React.Component {
 
   render() {
     return (
-      <div>
+      <div id="app">
         <div id="header">
           <h1>Zip Code Search</h1>
         </div>
