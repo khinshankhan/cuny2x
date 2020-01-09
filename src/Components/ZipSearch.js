@@ -1,12 +1,14 @@
 import React from 'react';
 import './ZipSearch.css';
 import Result from './Result';
+import axios from 'axios';
 
-class ZipSearch extends React.Component {
+export default class ZipSearch extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       value: '',
+      json: 'this state json',
     };
 
     // bindings go here
@@ -19,6 +21,17 @@ class ZipSearch extends React.Component {
   }
 
   handleSubmit(event) {
+    console.log("submitted")
+    let url = "http://ctp-zip-api.herokuapp.com/zip/" + this.state.value;
+    axios.get(url)
+      .then((response) => {
+        console.log(response.data);
+        this.setState({json: response.data});
+        //console.log(this.state.json);
+      },
+      (error) => {
+        console.log(error);
+      })
     event.preventDefault();
   }
 
@@ -45,4 +58,3 @@ class ZipSearch extends React.Component {
   }
 }
 
-export default ZipSearch;
