@@ -8,7 +8,7 @@ export default class ZipSearch extends React.Component {
     super(props);
     this.state = {
       value: '',
-      json: 'blank json',
+      json: [],
     };
 
     // bindings go here
@@ -36,6 +36,17 @@ export default class ZipSearch extends React.Component {
   }
 
   render() {
+    
+    var results = this.state.json.map((elem) =>
+      <Result LocationText={elem.LocationText}
+        State={elem.State}
+        Lat={elem.Lat}
+        Long={elem.Lat}
+        EstimatedPopulation={elem.EstimatedPopulation}
+        TotalWages={elem.TotalWages}/>
+    );
+
+
     return (
       <div id="app">
         <div id="header">
@@ -47,24 +58,12 @@ export default class ZipSearch extends React.Component {
             <input type="text" placeholder="10016" value={this.state.value} onChange={this.handleChange}/>
           </form>
           <div id="results">
-            No results
 
-            <Result LocationText={this.state.json[0].LocationText}
-              State={this.state.json[0].State}
-              Lat={this.state.json[0].Lat}
-              Long={this.state.json[0].Lat}
-              EstimatedPopulation={this.state.json[0].EstimatedPopulation}
-              TotalWages={this.state.json[0].TotalWages}/>
+            {this.state.json.length > 0 ? <div className="results">{results}</div> : <div>No results</div>}
 
-            <Result LocationText={this.state.json[1].LocationText}
-              State={this.state.json[1].State}
-              Lat={this.state.json[1].Lat}
-              Long={this.state.json[1].Lat}
-              EstimatedPopulation={this.state.json[1].EstimatedPopulation}
-              TotalWages={this.state.json[1].TotalWages}/>
-
-            <Result/>
             
+            
+
           </div>
         </div>
       </div>

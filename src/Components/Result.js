@@ -5,7 +5,6 @@ function Result(props) {
   return (
     <div className="result">
       <div className="top">
-        Here is a result component<br/>
         {props.LocationText}
       </div>
       <div className="bottom">
