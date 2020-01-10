@@ -55,6 +55,24 @@ export default class Giphy extends React.Component {
     event.preventDefault();
   };
 
+  handleFunny = event => {
+    this.apiCall("http://api.giphy.com/v1/gifs/search?q=", "funny");
+    event.preventDefault();
+  }
+  handleFood = event => {
+    this.apiCall("http://api.giphy.com/v1/gifs/search?q=", "food");
+    event.preventDefault();
+  }
+  handleFashion = event => {
+    this.apiCall("http://api.giphy.com/v1/gifs/search?q=", "fashion");
+    event.preventDefault();
+  }
+  handleTechnology = event => {
+    this.apiCall("http://api.giphy.com/v1/gifs/search?q=", "technology");
+    event.preventDefault();
+  }
+
+  
   handleChangeRating = event => {
     this.setState({rating: event.target.value});
   }
@@ -97,9 +115,21 @@ export default class Giphy extends React.Component {
         <button type="button" onClick={this.handleTrending}>
           Trending
         </button>
-
         <button type="button" onClick={this.handleRandom}>
           Random
+        </button>
+
+        <button type="button" onClick={this.handleFunny}>
+          Funny
+        </button>
+        <button type="button" onClick={this.handleFood}>
+          Food
+        </button>
+        <button type="button" onClick={this.handleFashion}>
+          Fashion
+        </button>
+        <button type="button" onClick={this.handleTechnology}>
+          Technology
         </button>
 
         <div id="header">
