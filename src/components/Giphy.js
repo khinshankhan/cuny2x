@@ -20,9 +20,7 @@ export default class Giphy extends React.Component {
   apiCall = (urlBeginning, query) => {
     let url =
       urlBeginning + query + "&rating=" + this.state.rating + "&api_key=kCdfDRHFr9wSutGKEqJo9mqx3hBndt91";
-
-      console.log(url);
-
+      // console.log(url);
     axios
       .get(url)
       .then(response => {
@@ -39,9 +37,7 @@ export default class Giphy extends React.Component {
 
   handleSubmit = event => {
     this.apiCall("http://api.giphy.com/v1/gifs/search?q=", this.state.query);
-
-    console.log(this.state.rating);
-    
+    // console.log(this.state.rating);
     event.preventDefault();
   };
 
@@ -55,30 +51,9 @@ export default class Giphy extends React.Component {
     event.preventDefault();
   };
 
-  /*
-  handleFunny = event => {
-    this.apiCall("http://api.giphy.com/v1/gifs/search?q=", "funny");
-    event.preventDefault();
-  }
-  handleFood = event => {
-    this.apiCall("http://api.giphy.com/v1/gifs/search?q=", "food");
-    event.preventDefault();
-  }
-  handleFashion = event => {
-    this.apiCall("http://api.giphy.com/v1/gifs/search?q=", "fashion");
-    event.preventDefault();
-  }
-  handleTechnology = event => {
-    this.apiCall("http://api.giphy.com/v1/gifs/search?q=", "technology");
-    event.preventDefault();
-  }
-  */
-
-
   handleChangeRating = event => {
     this.setState({rating: event.target.value});
   }
-
 
   makeGifCard = elem => {
     return <GifCard key={elem.url} url={elem.images.downsized_large.url} />;
@@ -103,7 +78,6 @@ export default class Giphy extends React.Component {
           />
         </form>
 
-
         <label>
           Rating:
           <select value={this.state.rating} onChange={this.handleChangeRating}>
@@ -114,28 +88,12 @@ export default class Giphy extends React.Component {
           </select>
         </label>
 
-
         <button type="button" onClick={this.handleTrending}>
           Trending
         </button>
         <button type="button" onClick={this.handleRandom}>
           Random
         </button>
-
-        {/*
-        <button type="button" onClick={this.handleFunny}>
-          Funny
-        </button>
-        <button type="button" onClick={this.handleFood}>
-          Food
-        </button>
-        <button type="button" onClick={this.handleFashion}>
-          Fashion
-        </button>
-        <button type="button" onClick={this.handleTechnology}>
-          Technology
-        </button>
-        */}
 
         <div id="header">
           {this.state.results.length > 0 ? (
