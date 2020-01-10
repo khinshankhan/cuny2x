@@ -8,17 +8,20 @@ export default class Giphy extends React.Component {
     super(props);
     this.state = {
       query: "",
-      results: []
+      results: [],
+      rating: "G",
     };
   }
 
-  handleChange = event => {
+  handleChangeQuery = event => {
     this.setState({ query: event.target.value });
   };
 
   apiCall = (urlBeginning, query) => {
     let url =
-      urlBeginning + query + "&api_key=kCdfDRHFr9wSutGKEqJo9mqx3hBndt91";
+      urlBeginning + query + "&rating=" + this.state.rating + "&api_key=kCdfDRHFr9wSutGKEqJo9mqx3hBndt91";
+
+      console.log(url);
 
     axios
       .get(url)
@@ -35,19 +38,27 @@ export default class Giphy extends React.Component {
   };
 
   handleSubmit = event => {
-    this.apiCall("http://api.giphy.com/v1/gifs/search?q=", this.state.query);
+    this.apiCall("http://api.giphy.com/v1/gifs/search?q=", this.state.query, this.state.rating);
+
+    console.log(this.state.rating);
+    
     event.preventDefault();
   };
 
   handleTrending = event => {
-    this.apiCall("http://api.giphy.com/v1/gifs/trending?", "");
+    this.apiCall("http://api.giphy.com/v1/gifs/trending?", "", this.state.rating);
     event.preventDefault();
   };
 
   handleRandom = event => {
-    this.apiCall("http://api.giphy.com/v1/gifs/random?", "");
+    this.apiCall("http://api.giphy.com/v1/gifs/random?", "", this.state.rating);
     event.preventDefault();
   };
+
+  handleChangeRating = event => {
+    this.setState({rating: event.target.value});
+  }
+
 
   makeGifCard = elem => {
     return <GifCard key={elem.url} url={elem.images.downsized_large.url} />;
@@ -61,15 +72,27 @@ export default class Giphy extends React.Component {
 
     return (
       <div id="app">
+
         <form onSubmit={this.handleSubmit}>
-          <label>City: </label>
+          <label>Search: </label>
           <input
             type="text"
             placeholder="Enter search terms"
             value={this.state.value}
-            onChange={this.handleChange}
+            onChange={this.handleChangeQuery}
           />
         </form>
+
+        <label>
+          Rating:
+          <select value={this.state.rating} onChange={this.handleChangeRating}>
+            <option value="G">G</option>
+            <option value="PG">PG</option>
+            <option value="PG-13">PG-13</option>
+            <option value="R">R</option>
+          </select>
+        </label>
+
 
         <button type="button" onClick={this.handleTrending}>
           Trending
