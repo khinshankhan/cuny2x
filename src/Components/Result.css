@@ -1,7 +1,7 @@
 div.result {
   border-style: solid;
   margin: 20px;
-  margin-left: auto;
+  margin-left: 10px;
   margin-right: auto;
   width: 75px;
   height: 30px;
@@ -11,4 +11,9 @@ div.result {
 
 div.top {
   background: lightgray;
+}
+
+div{
+  font-size: 20px;
+  margin-top: 20px;
 }
