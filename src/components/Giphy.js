@@ -72,7 +72,7 @@ export default class Giphy extends React.Component {
     event.preventDefault();
   }
 
-  
+
   handleChangeRating = event => {
     this.setState({rating: event.target.value});
   }
@@ -100,6 +100,7 @@ export default class Giphy extends React.Component {
             onChange={this.handleChangeQuery}
           />
         </form>
+
 
         <label>
           Rating:
