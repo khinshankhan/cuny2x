@@ -55,6 +55,7 @@ export default class Giphy extends React.Component {
     event.preventDefault();
   };
 
+  /*
   handleFunny = event => {
     this.apiCall("http://api.giphy.com/v1/gifs/search?q=", "funny");
     event.preventDefault();
@@ -71,6 +72,7 @@ export default class Giphy extends React.Component {
     this.apiCall("http://api.giphy.com/v1/gifs/search?q=", "technology");
     event.preventDefault();
   }
+  */
 
 
   handleChangeRating = event => {
@@ -120,6 +122,7 @@ export default class Giphy extends React.Component {
           Random
         </button>
 
+        {/*
         <button type="button" onClick={this.handleFunny}>
           Funny
         </button>
@@ -132,6 +135,7 @@ export default class Giphy extends React.Component {
         <button type="button" onClick={this.handleTechnology}>
           Technology
         </button>
+        */}
 
         <div id="header">
           {this.state.results.length > 0 ? (
