@@ -38,7 +38,7 @@ export default class Giphy extends React.Component {
   };
 
   handleSubmit = event => {
-    this.apiCall("http://api.giphy.com/v1/gifs/search?q=", this.state.query, this.state.rating);
+    this.apiCall("http://api.giphy.com/v1/gifs/search?q=", this.state.query);
 
     console.log(this.state.rating);
     
@@ -46,12 +46,12 @@ export default class Giphy extends React.Component {
   };
 
   handleTrending = event => {
-    this.apiCall("http://api.giphy.com/v1/gifs/trending?", "", this.state.rating);
+    this.apiCall("http://api.giphy.com/v1/gifs/trending?", "");
     event.preventDefault();
   };
 
   handleRandom = event => {
-    this.apiCall("http://api.giphy.com/v1/gifs/random?", "", this.state.rating);
+    this.apiCall("http://api.giphy.com/v1/gifs/random?", "");
     event.preventDefault();
   };
 
