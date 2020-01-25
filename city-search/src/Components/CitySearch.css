@@ -1,0 +1,52 @@
+/*
+html, body, div#root, div#app, div#header {
+  margin: 0;
+  padding: 0;
+}
+*/
+
+#app {
+  text-align: center;
+}
+
+div#header {
+  background-color: #222222;
+  width: 100%;
+}
+
+h1 {
+  color: white;
+}
+
+div.ZipCode{
+  color: dodgerblue;
+  font: Copse;
+  font-style: italic;
+  font-size: 17px;
+  margin-top: 5px;
+}
+
+div.result{
+  /*
+  border-style: solid;
+  margin: 20px;
+  margin-left: 10px;
+  margin-right: auto;
+  width: 75px;
+  height: 30px;
+  border-radius: 15px;
+  text-align: center;
+  margin-top: 30px;
+  display: flex;
+  display: inline-block;
+  */
+  display: inline-block;
+  border-style: solid;
+  margin-left: 10px;
+  width: 75px;
+  height: 30px;
+  border-radius: 15px;
+  text-align: center;
+  background-color: gold;
+ 
+}

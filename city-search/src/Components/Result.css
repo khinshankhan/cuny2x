@@ -1,0 +1,19 @@
+div.result {
+  border-style: solid;
+  margin: 20px;
+  margin-left: 10px;
+  margin-right: auto;
+  width: 75px;
+  height: 30px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+div.top {
+  background: lightgray;
+}
+
+div{
+  font-size: 20px;
+  margin-top: 20px;
+}
